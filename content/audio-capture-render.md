@@ -17,7 +17,7 @@ metaDescription: "采集并渲染本地音频"
 
 对于声网实时音视频 Web SDK，你需要：
 
-1. 调用 `getMicrophones` 获取可用的摄像头列表。
+1. 调用 `getMicrophones` 获取可用的麦克风列表。
 
     `getMicrophones` 方法会通过 Promise 异步返回一个 `MediaDeviceInfo` 对象的数组。`MediaDeviceInfo` 对象复用了 WebRTC API 中的 [MediaDeviceInfo 对象](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo)。因为是异步方法，你可以使用 then/catch (ES6) 或 async/await (ES7) 获取返回值。
 
@@ -35,9 +35,9 @@ metaDescription: "采集并渲染本地音频"
     });
     ```
 
-2. 根据返回的 `MediaDeviceInfo` 对象获取摄像头设备信息。
+2. 根据返回的 `MediaDeviceInfo` 对象获取麦克风设备信息。
 
-    在此教程中，我们在 HTML 中创建一个下拉菜单来供用户选择使用的摄像头设备。在用户界面上使用 `label` 属性显示设备信息。`deviceId` 属性用于保存设备 ID，用于后续的摄像头访问。
+    在此教程中，我们在 HTML 中创建一个下拉菜单来供用户选择使用的麦克风设备。在用户界面上使用 `label` 属性显示设备信息。`deviceId` 属性用于保存设备 ID，用于后续的麦克风访问。
 
     > `label`，即设备标签，返回一个 DOMString，代表描述对应设备的标签。如果浏览器没有获取设备权限，则返回 `""`。
 
@@ -63,7 +63,7 @@ metaDescription: "采集并渲染本地音频"
     // 定义设备 ID 与标签的映射
     let dict = {};
 
-    // 获取摄像头列表
+    // 获取麦克风列表
     AgoraRTC.getMicrophones()
     .then((deviceInfoArray) => {
         for (let deviceInfo of deviceInfoArray) {
